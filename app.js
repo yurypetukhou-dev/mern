@@ -1,10 +1,15 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 const config = require('config')
+const authRouter = require('./routers/auth')
 
 const app = express()
+app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use(express.json({ extended: true }))
+// parse application/json
+app.use(bodyParser.json())
+app.use('/api/auth',  authRouter)
 
 const PORT = config.get('port') || '5000';
 

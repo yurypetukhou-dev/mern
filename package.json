@@ -1,0 +1,30 @@
+{
+  "name": "mern",
+  "version": "1.0.0",
+  "description": "Training course MERN",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npm run start --prefix client",
+    "server": "nodemon app.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yurypetukhou-dev/mern.git"
+  },
+  "author": "Yury Petukhou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yurypetukhou-dev/mern/issues"
+  },
+  "homepage": "https://github.com/yurypetukhou-dev/mern#readme",
+  "dependencies": {
+    "concurrently": "^5.0.2",
+    "config": "^3.2.4",
+    "express": "^4.17.1",
+    "mongodb": "^3.4.1",
+    "mongoose": "^5.8.3",
+    "nodemon": "^2.0.2"
+  }
+}

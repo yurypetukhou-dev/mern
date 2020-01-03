@@ -22,12 +22,17 @@ const useHttp = () => {
                 console.log(data.errors[0].msg)
                 setError(data.errors[0].msg)
             }
+
+            return data
         } catch (e) {
 
         }
 
     })
-    return {error, request}
+
+    const clearErrors = useCallback(() => setError(null), [])
+
+    return {error, request, clearErrors}
 }
 
 export default useHttp

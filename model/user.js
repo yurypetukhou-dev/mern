@@ -1,7 +1,7 @@
 const {Schema, model, Types} = require('mongoose')
 const crypto = require('crypto')
 const config = require('config')
-
+const jwt = require('jsonwebtoken')
 const User = new Schema({
     email: {
         type: String,
@@ -18,7 +18,6 @@ const User = new Schema({
 })
 
 User.methods.setPassword = function (password) {
-    console.log(password, '<--- model')
     this.salt = crypto.randomBytes(16).toString('hex');
     this.passwordHash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex')
 }
@@ -37,7 +36,7 @@ User.methods.generateJWT = function () {
         id: this._id,
         email: this.email,
         exp: parseInt(exp.getTime() / 1000),
-    },config.get("jwtSecret") );
+    }, config.get("jwtSecret") );
 };
 
 module.exports = model('User', User)

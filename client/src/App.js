@@ -1,12 +1,18 @@
 import React from 'react';
+import useRoutes from "./components/secretRoutes";
+import {BrowserRouter as Router} from "react-router-dom";
 
 
 function App() {
-  return (
-    <div className="App">
+    const AuthRouters = useRoutes(false)
+    return (
+        <div className="App">
+            <Router>
+                {AuthRouters}
+            </Router>
+        </div>
 
-    </div>
-  );
+    );
 }
 
 export default App;

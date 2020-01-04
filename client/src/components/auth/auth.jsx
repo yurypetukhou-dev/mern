@@ -61,7 +61,10 @@ const Auth = (props) => {
                         <label htmlFor="password">Password</label>
                     </div>
                 </div>
-                <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+                <button className="btn waves-effect waves-light" type="submit" name="action">Registr
+                    <i className="material-icons right">send</i>
+                </button>
+                <button onClick={() => {history.push('/login')}} className="btn waves-effect waves-light" type="submit" name="action" style={{marginLeft: "10px"}}>Login
                     <i className="material-icons right">send</i>
                 </button>
             </form>

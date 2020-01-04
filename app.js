@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const config = require('config')
 const authRouter = require('./routers/auth')
+const linksRouter = require('./routers/links')
 
 const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -10,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 app.use('/api/auth',  authRouter)
+app.use('/api/link',  linksRouter)
 
 const PORT = config.get('port') || '5000';
 

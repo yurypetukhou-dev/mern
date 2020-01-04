@@ -5,17 +5,17 @@ import useAuth from "./hooks/auth.hook";
 import {AuthContext} from './context/auth.context'
 
 function App() {
-    //TODO доделать контекст
-    const {token, userId, loginUser} = useAuth()
+    //TODO сделать что бы при каждом запросе шол вместе с Auth
+    const {token, userId, loginUser, logOut} = useAuth()
     const isAuth = !!token
     const AuthRouters = useRoutes(isAuth)
     return (
-        <AuthContext.Provider value={{token, userId, loginUser, isAuth}}>
-        <div className="App">
-            <Router>
-                {AuthRouters}
-            </Router>
-        </div>
+        <AuthContext.Provider value={{token, userId, loginUser, logOut, isAuth}}>
+            <div className="App">
+                <Router>
+                    {AuthRouters}
+                </Router>
+            </div>
         </AuthContext.Provider>
     );
 }

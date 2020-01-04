@@ -14,6 +14,12 @@ const useAuth = () => {
         }))
     })
 
+    const logOut = useCallback(() => {
+        setToken(null)
+        setUserId(null)
+        localStorage.removeItem(userData)
+    })
+
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem(userData))
 
@@ -21,7 +27,7 @@ const useAuth = () => {
             loginUser(data.jwt, data.userId)
         }
     }, [loginUser])
-    return {loginUser, token, userId}
+    return {loginUser, logOut, token, userId}
 }
 
 export default useAuth
